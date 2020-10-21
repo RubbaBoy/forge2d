@@ -1,0 +1,33 @@
+name: Dart Test
+
+on: push
+
+jobs:
+  test:
+    name: Ubuntu Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.3
+      - uses: cedx/setup-dart@v2
+      - name: Dart Initializing
+        run: |
+          dart --version
+          pub get
+      - name: Formatting Check
+        run: ./tool/ensure_dartfmt.sh
+      - name: Dart Analyzer
+        run: dartanalyzer lib/box2d.dart
+      - name: Activate Coveralls
+        run: pub global activate dart_coveralls
+      - name: Coverage Report
+        shell: bash
+        env:
+          coveralls_token: ${{ secrets.COVERALLS_TOKEN }}
+        run: |
+          dart benchmark/bench2d.dart
+          pub global run dart_coveralls report \
+          --token "$coveralls_token" \
+          --retry 2 \
+          --exclude-test-files \
+          benchmark/bench2d.dart
+        if: ${{ env.coveralls_token != '' }}
