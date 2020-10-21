@@ -1,7 +1,7 @@
 ### A Dart 2D physics engine
 
-[![Build Status](https://travis-ci.org/google/box2d.dart.svg?branch=master)](https://travis-ci.org/google/box2d.dart)
-[![Coverage Status](https://coveralls.io/repos/google/box2d.dart/badge.svg?branch=master)](https://coveralls.io/r/google/box2d.dart)
+[![Build Status](https://github.com/flame-engine/forge2d/workflows/Dart%20Test/badge.svg)](https://github.com/flame-engine/forge2d/actions)
+[![Coverage Status](https://coveralls.io/repos/flame-engine/forge2d/badge.svg?branch=master)](https://coveralls.io/r/flame-engine/forge2d)
 
 *This is a Dart port of Java's Box2D libraries.*
 
